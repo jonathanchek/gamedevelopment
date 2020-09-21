@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     public GameObject pacman;
     public AnimationClip pacmanDeathAnimation;
     public List<GameObject> ghosts;
-    public List<GameObject> pills;
+    public List<GameObject> pellets;
 
     public AudioSource pacmanKilledAudio;
     public AudioSource gameWonAudio;
@@ -50,16 +50,16 @@ public class GameManager : MonoBehaviour {
 		switch (gameState)
         {
             case GameState.PLAY:
-                bool foundPill = false;
-                foreach (GameObject pill in pills)
+                bool foundpellet = false;
+                foreach (GameObject pellets in pellets)
                 {
-                    if (pill.activeSelf)
+                    if (pellets.activeSelf)
                     {
-                        foundPill = true;
+                        foundpellet = true;
                         break;
                     }
                 }
-                if (!foundPill)
+                if (!foundpellet)
                 {
                     gameState = GameState.GAME_WON;
                 }
@@ -173,9 +173,9 @@ public class GameManager : MonoBehaviour {
         {
             ghost.GetComponent<GhostController>().reset();
         }
-        foreach (GameObject pill in pills)
+        foreach (GameObject pellets in pellets)
         {
-            pill.SetActive(true);
+            pellets.SetActive(true);
         }
     }
 
